@@ -1,0 +1,53 @@
+version: '3.4'
+
+services:
+  eureka-server:
+    image: steeltoeoss/eureka-server
+    ports:
+      - "8761:8761"
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5239:80"
+    environment:
+    - EUREKA_SERVER_HOST=eureka-server
+
+  inventoryapi:
+    image: ${DOCKER_REGISTRY-}inventoryapi
+    ports:
+      - "5013:80"
+    environment:
+    - EUREKA_SERVER_HOST=eureka-server
+
+  adminapi:
+    image: ${DOCKER_REGISTRY-}adminapi
+    ports:
+      - "3001:80"
+    environment:
+    - EUREKA_SERVER_HOST=eureka-server
+
+  authapi:
+    image: ${DOCKER_REGISTRY-}authapi
+    ports:
+      - "3002:80"
+    environment:
+    - EUREKA_SERVER_HOST=eureka-server
+
+  cartapi:
+    image: ${DOCKER_REGISTRY-}cartapi
+    ports:
+      - "3003:80"
+    environment:
+    - EUREKA_SERVER_HOST=eureka-server
+#version: '3.4'
+
+#services:
+#  apigateway:
+#    image: ${DOCKER_REGISTRY-}apigateway
+#    build:
+#      context: .
+#      dockerfile: Dockerfile

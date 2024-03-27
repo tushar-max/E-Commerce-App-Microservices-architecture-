@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - EUREKA_SERVER_HOST=eureka-server  
+    ports:
+      - "80"
+
+  authapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - EUREKA_SERVER_HOST=eureka-server  
+    ports:
+      - "80"
+
+  adminapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - EUREKA_SERVER_HOST=eureka-server  
+    ports:
+      - "80" 
+
+  inventoryapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - EUREKA_SERVER_HOST=eureka-server  
+    ports:
+      - "80"
+
+  cartapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - EUREKA_SERVER_HOST=eureka-server  
+    ports:
+      - "80"
